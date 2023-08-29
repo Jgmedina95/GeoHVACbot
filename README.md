@@ -13,3 +13,6 @@ The assessment includes:
 options:
     general QA on goethermal HVAC systems
 
+For usage, 
+Go to the notebooks folder, put your openai key and run the notebook.
+
