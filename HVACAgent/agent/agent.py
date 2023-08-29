@@ -4,8 +4,9 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from rmrkl import ChatZeroShotAgent, RetryAgentExecutor
 
 from .prompt import FORMAT_INSTRUCTIONS, QUESTION_PROMPT, SUFFIX
-from .tools import make_tools
+from .tools import make_tools, Doc, Text,search_texts, load_texts
 
+import time
 load_dotenv()
 
 
@@ -34,7 +35,7 @@ class HVACAgent:
     def __init__(
         self,
         tools=None,
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         tools_model="gpt-3.5-turbo",
         temp=0.1,
         max_iterations=40,
@@ -61,6 +62,8 @@ class HVACAgent:
         )
 
     def run(self, prompt):
+        #wait three seconds
+        time.sleep(3)
         outputs = self.agent_executor({"input": prompt})
         # Parse long output (with intermediate steps)
         intermed = outputs["intermediate_steps"]

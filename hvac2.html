@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceTitan Form Loader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #widgetContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="loadWidget()">Load ServiceTitan Form</button>
+    <div id="widgetContainer"></div>
+
+    <script>
+        function loadWidget() {
+            // Check if iframe is already loaded
+            if(document.querySelector('#iframe_servicetitan_form')) {
+                alert("ServiceTitan Form is already loaded!");
+                return;
+            }
+            
+            var iframe = document.createElement('iframe');
+            iframe.src = "https://www.servicetitan.com/tools/embedded-form?form_type=hvac-load-calculator";
+            iframe.width = "700px";
+            iframe.height = "500px";
+            iframe.id = "iframe_servicetitan_form";
+            iframe.title = "ServiceTitan Embedded Form";
+            
+            document.getElementById('widgetContainer').appendChild(iframe);
+        }
+    </script>
+
+</body>
+
+</html>
